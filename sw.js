@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.be363280281d68f63c01538faa2d6b17.js"
+  "/precache-manifest.45eb78c8854d9d6504f9bf22c6c57318.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "vuepwa"});
@@ -27,3 +27,26 @@ workbox.core.setCacheNameDetails({prefix: "vuepwa"});
 self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
+
+self.addEventListener('push', function(event) {
+	console.log('push');
+  //푸시 리스너
+	var payload = event.data.json();
+	const title = payload.title;
+	const options = {
+		body: payload.body,
+		icon: 'fav.ico',
+		badge: 'fav.ico',
+		vibrate: [200, 100, 200, 100, 200, 100, 400],
+		data : payload.params
+	};
+	event.waitUntil( self.registration.showNotification(title, options) );
+});
+
+self.addEventListener('notificationclick', function(event) {
+	console.log('notificationclick');
+  //푸시 노티피케이션 에서 클릭 리스너
+	var data = event.notification.data;
+	event.notification.close();
+	event.waitUntil( clients.openWindow( data.url ) );
+});
