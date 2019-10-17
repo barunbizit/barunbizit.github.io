@@ -11,12 +11,10 @@ firebase.initializeApp({
   appId: "1:218708421207:web:bcd7ad0373d91bef0b1112"
 });
 
-console.log('firebase-messaging-sw !');
-
 const messaging = firebase.messaging();
 
 messaging.setBackgroundMessageHandler(function(payload) {
-  console.log('[firebase-messaging-sw.js] Received background message ', payload);
+  console.log('background message handler !');
 
   const notificationTitle = 'Background Message Title';
   const notificationOptions = {
@@ -24,6 +22,5 @@ messaging.setBackgroundMessageHandler(function(payload) {
     icon: '/firebase-logo.png'
   };
 
-  return self.registration.showNotification(notificationTitle,
-    notificationOptions);
+  return self.registration.showNotification(notificationTitle, notificationOptions);
 });
