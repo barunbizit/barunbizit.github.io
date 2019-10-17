@@ -1,29 +1,24 @@
-/**
- * Welcome to your Workbox-powered service worker!
- *
- * You'll need to register this file in your web app and you should
- * disable HTTP caching for this file too.
- * See https://goo.gl/nhQhGp
- *
- * The rest of the code is auto-generated. Please don't update this file
- * directly; instead, make changes to your Workbox build configuration
- * and re-run your build process.
- * See https://goo.gl/2aRDsh
- */
+importScripts("/precache-manifest.4af7e9de267f62fa56ec024cccbe971e.js", "https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
-importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
-
-importScripts(
-  "/precache-manifest.be363280281d68f63c01538faa2d6b17.js"
-);
-
-workbox.core.setCacheNameDetails({prefix: "vuepwa"});
-
-/**
- * The workboxSW.precacheAndRoute() method efficiently caches and responds to
- * requests for URLs in the manifest.
- * See https://goo.gl/S9QRab
- */
 self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
+
+self.addEventListener('push', function (event) {
+  let push_message = event.data.json();
+  const options = {
+    body : push_message.notification.body,
+    icon : push_message.notification.icon,
+    image: push_message.notification.image,
+    tag  : 'alert'
+  };
+  event.waitUntil(self.registration.showNotification(push_message.notification.title, options));
+});
+
+self.addEventListener('notificationclick', function (event) {
+  const clicked = event.notification;
+  clicked.close();
+  
+  const promiseChain = clients.openWindow('http://www.naver.com');
+  event.waitUntil(promiseChain);
+});
