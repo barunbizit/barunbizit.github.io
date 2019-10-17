@@ -9,7 +9,7 @@
       };
 
       firebase.initializeApp(firebaseConfig);
-      console.log('firebase initiflized !');
+      console.log('firebase initialized !');
 
       const messaging = firebase.messaging();
 
@@ -32,4 +32,14 @@
           console.log('Unable to retrieve refreshed token ', err);
           showToken('Unable to retrieve refreshed token ', err);
         });
+      });
+
+      messaging.onMessage(function (payload) {
+        console.log('Message received. ', payload);
+      });
+
+      messaging.getToken().then(function (currentToken) {
+        console.log('getting token ! ' + currentToken);
+      }).catch(function (err) {
+        console.log('An error occurred while retrieving token. ', err);
       });</script><script src=/js/chunk-vendors.a523d01f.js></script><script src=/js/app.4e685d37.js></script></body></html>
