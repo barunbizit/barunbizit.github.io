@@ -1,67 +1,37 @@
-importScripts("/precache-manifest.82c091cc9cc8dc014a89323832f73400.js", "https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
+importScripts("/precache-manifest.0cb83f6d62f4771266a83c3773e833ba.js", "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
-importScripts('https://www.gstatic.com/firebasejs/6.3.4/firebase-app.js');
-importScripts('https://www.gstatic.com/firebasejs/6.3.4/firebase-messaging.js');
+/**
+ * Welcome to your Workbox-powered service worker!
+ *
+ * You'll need to register this file in your web app and you should
+ * disable HTTP caching for this file too.
+ * See https://goo.gl/nhQhGp
+ *
+ * The rest of the code is auto-generated. Please don't update this file
+ * directly; instead, make changes to your Workbox build configuration
+ * and re-run your build process.
+ * See https://goo.gl/2aRDsh
+ */
 
-var firebaseConfig = {
-  apiKey: "AIzaSyCOwlwaex-fR4x6TDoILqLWJkUC8kjBsU8",
-  authDomain: "pushtest-73403.firebaseapp.com",
-  databaseURL: "https://pushtest-73403.firebaseio.com",
-  projectId: "pushtest-73403",
-  storageBucket: "pushtest-73403.appspot.com",
-  messagingSenderId: "824115189424",
-  appId: "1:824115189424:web:8de494f9b355171273cd75"
-};
-firebase.initializeApp(firebaseConfig);
-console.log('firebase initialized !');
-const messaging = firebase.messaging();
+importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
-messaging.usePublicVapidKey("BHb_sBj3umZfP8DXRL4lwsnsZFzoPbhEm2xvPefZQUiiDS4tssV8DqyRosr2vFhO4Ct_2SGkNhdgj6-kAmmSZL8");
-  console.log('before request permission !');
-  Notification.requestPermission().then(function (permission) {
-  if (permission === 'granted') {
-    console.log('Notification permission granted.');
-  } else {
-    console.error('Unable to get permission to notify.');
+importScripts(
+  "/precache-manifest.e2f7511cac76efe898b50b9a1ce410ba.js"
+);
+
+workbox.core.setCacheNameDetails({prefix: "vuepwa"});
+
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.type === 'SKIP_WAITING') {
+    self.skipWaiting();
   }
 });
 
-messaging.onMessage((payload) => {
-  console.log('Message received. ', payload);
-});
-
-messaging.setBackgroundMessageHandler(function(payload) {
-  console.log('[firebase-messaging-sw.js] Received background message ', payload);
-  // Customize notification here
-  const notificationTitle = 'Background Message Title';
-  const notificationOptions = {
-    body: 'Background Message body.',
-    icon: '/firebase-logo.png'
-  };
-  return self.registration.showNotification(notificationTitle, notificationOptions);
-});
-
+/**
+ * The workboxSW.precacheAndRoute() method efficiently caches and responds to
+ * requests for URLs in the manifest.
+ * See https://goo.gl/S9QRab
+ */
 self.__precacheManifest = [].concat(self.__precacheManifest || []);
-workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-self.addEventListener('push', function (event) {
-  console.log('push !');
-  let push_message = event.data.json();
-  const options = {
-    body : push_message.notification.body,
-    icon : push_message.notification.icon,
-    image: push_message.notification.image,
-    tag  : 'alert'
-  };
-  event.waitUntil(self.registration.showNotification(push_message.notification.title, options));
-});
-
-self.addEventListener('notificationclick', function (event) {
-  console.log('notification click !');
-  const clicked = event.notification;
-  clicked.close();
-  
-  const promiseChain = clients.openWindow('http://www.naver.com');
-  event.waitUntil(promiseChain);
-});
