@@ -1,19 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "b7d6a5b14e934d078b31",
-    "url": "/css/app.a510f641.css"
+    "revision": "04993dc8016593c69ce1",
+    "url": "/css/app.6af8ca07.css"
+  },
+  {
+    "revision": "b5ced6c83437c1e4f594cb8726037b2e",
+    "url": "/firebase-messaging-sw.js"
   },
   {
     "revision": "82b9c7a5a3f405032b1db71a25f67021",
     "url": "/img/logo.82b9c7a5.png"
   },
   {
-    "revision": "c04dea506818267e119a801dbde0dd78",
+    "revision": "febe4dbb39294758a2b563c095f96c29",
     "url": "/index.html"
   },
   {
-    "revision": "b7d6a5b14e934d078b31",
-    "url": "/js/app.4e685d37.js"
+    "revision": "04993dc8016593c69ce1",
+    "url": "/js/app.269bace5.js"
   },
   {
     "revision": "1a71bd5259b43fee7f30",
