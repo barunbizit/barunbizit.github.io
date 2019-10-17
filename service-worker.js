@@ -1,4 +1,4 @@
-importScripts("/precache-manifest.2a50c6b9971aa7a12be6be77e861116c.js", "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
+importScripts("/precache-manifest.d43fec6689306917aa6ca6d665ba91eb.js", "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 /* workbox - sw */
 
@@ -14,3 +14,14 @@ self.addEventListener('message', (event) => {
 
 self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
+
+self.addEventListener('push', event => {
+  log('Push ' + event.data.text());
+
+  const title = 'My PWA!';
+  const options = {
+    body: event.data.text()
+  };
+
+  event.waitUntil(self.registration.showNotification(title, options));
+});
