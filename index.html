@@ -9,14 +9,16 @@
       };
 
       firebase.initializeApp(firebaseConfig);
+      console.log('firebase initiflized !');
 
       const messaging = firebase.messaging();
 
       messaging.usePublicVapidKey('BBklpGnkbNHRHx2b9mcv46ezdtSL1CM6Bh7hvgLsu3ifAXbveaK7_HGPMeC1PAHhePggoTqyNybV5O08iF2hO8s');
 
-      messaging.onTokenRefresh(() => {
-        messaging.getToken().then((refreshedToken) => {
-          console.log('Token refreshed.');
+      messaging.onTokenRefresh(function () {
+        console.log('request token refresh !');
+        messaging.getToken().then(function (refreshedToken) {
+          console.log('Token refreshed !');
           // Indicate that the new Instance ID token has not yet been sent to the
           // app server.
           setTokenSentToServer(false);
@@ -26,7 +28,7 @@
           // Display new Instance ID token and clear UI of all previous messages.
           resetUI();
           // [END_EXCLUDE]
-        }).catch((err) => {
+        }).catch(function (err) {
           console.log('Unable to retrieve refreshed token ', err);
           showToken('Unable to retrieve refreshed token ', err);
         });
