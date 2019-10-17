@@ -1,6 +1,8 @@
 importScripts('https://www.gstatic.com/firebasejs/6.3.4/firebase-app.js');
 importScripts('https://www.gstatic.com/firebasejs/6.3.4/firebase-messaging.js');
 
+console.log('firebase-messaging-sw.js !');
+
 var firebaseConfig = {
   apiKey: "AIzaSyCE9K0X8StAgnxypSg8QTeVs6Mvh7CWHfo",
   authDomain: "pwatest-c4ed0.firebaseapp.com",
@@ -12,7 +14,6 @@ var firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-console.log('firebase initialized !');
 
 const messaging = firebase.messaging();
 
