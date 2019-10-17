@@ -1,4 +1,4 @@
-importScripts("/precache-manifest.be5394216ba3f1508e680c52ca519175.js", "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
+importScripts("/precache-manifest.343f569a81ddad6ff9db3b0145dfa9b9.js", "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
@@ -12,4 +12,8 @@ self.addEventListener('message', (event) => {
 
 self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
+
+import store from './store'
+
+store.commit('addMessage', 'custom service-worker is loaded.');
 
