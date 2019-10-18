@@ -1,4 +1,4 @@
-importScripts("/precache-manifest.5f2be64d3ddea154ae610ec16c9b51a6.js", "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
+importScripts("/precache-manifest.88530425addb08b98f44cf7631b11c4d.js", "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 workbox.core.setCacheNameDetails({prefix: "vuepwa"});
 
@@ -8,8 +8,8 @@ self.addEventListener('install', (event) => {
   self.skipWaiting();
 });
 
-self.addEventListener('active', (event) => {
-  console.log('service-worker active ..');
+self.addEventListener('activate', (event) => {
+  console.log('service-worker activate ..');
 
   self.clients.claim();
 });
