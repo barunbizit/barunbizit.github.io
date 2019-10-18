@@ -3,20 +3,19 @@ importScripts("/precache-manifest.3e6f8e2c2bae599880d041121a8abb5a.js", "https:/
 workbox.core.setCacheNameDetails({prefix: "vuepwa"});
 
 self.addEventListener('install', (event) => {
-  self.skipWaiting();
-
-  console.log('service-worker install ...');
+  console.log('service-worker install . . .');
   
+  self.skipWaiting();
 });
 
 self.addEventListener('activate', (event) => {
-  console.log('service-worker activate ...');
+  console.log('service-worker activate . . .');
 
   self.clients.claim();
 });
 
 self.addEventListener('message', (event) => {
-  console.log('service-worker message ... ', event);
+  console.log('service-worker message . . . ', event);
 });
 
 self.__precacheManifest = [].concat(self.__precacheManifest || []);
