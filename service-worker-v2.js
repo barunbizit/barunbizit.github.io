@@ -2,7 +2,7 @@ importScripts("/precache-manifest.71d0bec0cc9afe8a08bf9583d513d2c7.js", "https:/
 
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
-workbox.core.setCacheNameDetails({prefix: "vuepwa"});
+workbox.core.setCacheNameDetails({prefix: "vuepwa2"});
 
 self.addEventListener('message', (event) => {
   if (event.data && event.data.type === 'SKIP_WAITING') {
