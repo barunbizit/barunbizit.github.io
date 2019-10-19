@@ -1,25 +1,25 @@
-importScripts("/precache-manifest.8dec27be19e5ce2ff67ab531dd6a9c1a.js", "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
+importScripts("/precache-manifest.d9346313927d2321a4c76ce04325c4fa.js", "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 workbox.core.setCacheNameDetails({prefix: "swcache-v1"});
 
 self.addEventListener('install', (event) => {
-  console.log('service-worker install . . .');
+  console.info('serviceWorker install . . .');
   
   self.skipWaiting();
 });
 
 self.addEventListener('activate', (event) => {
-  console.log('service-worker activate . . .');
+  console.info('serviceWorker activate . . .');
 
   self.clients.claim();
 });
 
 self.addEventListener('message', (event) => {
-  console.log('service-worker message . . . ', event);
+  console.info('serviceWorker message . . . ', event);
 });
 
 self.addEventListener('push', (event) => {
-  console.log('service-worker push . . . ' + event.data.text());
+  console.info('serviceWorker push . . . ' + event.data.text());
 
   event.waitUntil(self.registration.showNotification('PUSH', {body:event.data.text()}));
 });
