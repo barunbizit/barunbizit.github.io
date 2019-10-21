@@ -14,3 +14,6 @@ firebase.initializeApp({
 
 const messaging = firebase.messaging();
 
+messaging.onMessage((payload) => {
+  console.info('[info] Firebase 메세지 : ' + JSON.stringify(payload));
+});
