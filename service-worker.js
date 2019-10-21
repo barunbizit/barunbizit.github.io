@@ -1,4 +1,4 @@
-importScripts("/precache-manifest.8708f613023d615bb0fbdadf5abbbc5f.js", "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
+importScripts("/precache-manifest.9d90e15ca25e26c63b1e12afd5aee57f.js", "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 workbox.core.setCacheNameDetails({prefix: "swcache-v1"});
 
@@ -15,7 +15,7 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('push', (event) => {
-  console.info('serviceWorker push . . . ' + event.data.text());
+  console.info('[info] 서비스워커 알림 : ' + event);
 
   event.waitUntil(self.registration.showNotification('PUSH', {body:event.data.text()}));
 });
