@@ -14,6 +14,11 @@ firebase.initializeApp({
 
 const messaging = firebase.messaging();
 
-messaging.onMessage((payload) => {
-  console.info('[info] Firebase 메세지 : ' + JSON.stringify(payload));
+messaging.setBackgroundMessageHandler((payload) => {
+  console.info('[info] Firebase 알림 : ' + JSON.stringify(payload));
+
+  return self.registration.showNotification('[MONEYSHIELD.PWA]', {
+    body: JSON.stringify(payload),
+    icon: '/favicon-32x32.png'
+  });
 });
