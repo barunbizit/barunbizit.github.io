@@ -12,9 +12,9 @@ firebase.initializeApp({
   measurementId: "G-93VWW5Y93Q"
 });
 
-const messaging = firebase.messaging();
+const firebasemessage = firebase.messaging();
 
-messaging.setBackgroundMessageHandler((payload) => {
+firebasemessage.setBackgroundMessageHandler((payload) => {
   console.info('[info] Firebase 알림 : ' + JSON.stringify(payload));
 
   return self.registration.showNotification('[MONEYSHIELD.PWA]', {
