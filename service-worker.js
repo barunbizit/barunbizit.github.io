@@ -3,19 +3,15 @@ importScripts("/precache-manifest.384e2ff270a472f4c84f11783fe6731f.js", "https:/
 workbox.core.setCacheNameDetails({prefix: "swcache-v1"});
 
 self.addEventListener('install', (event) => {
-  console.info('serviceWorker install . . .');
+  console.info('[info] 서비스워커를 설치합니다 ..');
 
   self.skipWaiting();
 });
 
 self.addEventListener('activate', (event) => {
-  console.info('serviceWorker activate . . .');
+  console.info('[info] 서비스워커를 활성화합니다 ..');
 
   self.clients.claim();
-});
-
-self.addEventListener('message', (event) => {
-  console.info('serviceWorker message . . . ', event);
 });
 
 self.addEventListener('push', (event) => {
