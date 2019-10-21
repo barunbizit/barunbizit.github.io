@@ -14,11 +14,11 @@ self.addEventListener('activate', (event) => {
   self.clients.claim();
 });
 
-// self.addEventListener('push', (event) => {
-//   console.info('[info] 서비스워커 알림 : ' + event);
+self.addEventListener('push', (event) => {
+  console.info('[info] 서비스워커 알림 : ' + event);
 
-//   event.waitUntil(self.registration.showNotification('PUSH', {body:event.data.text()}));
-// });
+  event.waitUntil(self.registration.showNotification('PUSH', {body:event.data.text()}));
+});
 
 self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
