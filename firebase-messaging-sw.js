@@ -15,6 +15,3 @@ firebase.initializeApp(firebaseConfig);
 
 const messaging = firebase.messaging();
 
-messaging.onMessage((payload) => {
-  console.info('[debug] firebase on message. (' + JSON.stringify(payload) + ')');
-});
