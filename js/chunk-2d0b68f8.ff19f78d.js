@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d0b68f8"],{"1e4b":function(n,t,e){"use strict";e.r(t);var o=function(){var n=this,t=n.$createElement,e=n._self._c||t;return e("ion-content",{attrs:{fullscreen:""}},[e("div",{staticStyle:{background:"rgba(132, 172, 249, 1.0)",height:"60vh",color:"#fff",padding:"20vh 0"}},[n._v(" MONEY SHIELD PWA ")])])},c=[],r={methods:{move:function(){this.$router.push("/main")}}},u=r,i=e("2877"),s=Object(i["a"])(u,o,c,!1,null,null,null);t["default"]=s.exports}}]);
+//# sourceMappingURL=chunk-2d0b68f8.ff19f78d.js.map

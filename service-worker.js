@@ -1,4 +1,4 @@
-importScripts("/precache-manifest.d44b813b394fbf3edc0fac974be547a0.js", "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
+importScripts("/precache-manifest.663072056378372fff4f06387c47637c.js", "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 workbox.core.setCacheNameDetails({prefix: "swcache-v1"});
 
@@ -13,12 +13,6 @@ self.addEventListener('activate', (event) => {
 
   self.clients.claim();
 });
-
-// self.addEventListener('push', (event) => {
-//   console.info('[info] 서비스워커 알림 : ' + event);
-
-//   event.waitUntil(self.registration.showNotification('PUSH', {body:event.data.text()}));
-// });
 
 self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
