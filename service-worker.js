@@ -1,13 +1,10 @@
-importScripts("/precache-manifest.736ee4277463478fc0f7ae92d97c1ddf.js", "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
+importScripts("/precache-manifest.f3c42addc097083dc115eab036e94757.js", "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
-workbox.loadModule("workbox-strategies");
-
-workbox.skipWaiting();
-workbox.clientsClaim();
-
-workbox.routing.registerRoute(routeData => {
-  return routeData.event.request.headers.get("accept").includes("text/html");
-}, workbox.strategies.networkFirst());
+if (workbox) {
+  console.log('workbox loaded');
+}else{
+  console.log('workbox is not loaded');
+}
 
 // workbox.core.setCacheNameDetails({prefix: "pwa"});
 
