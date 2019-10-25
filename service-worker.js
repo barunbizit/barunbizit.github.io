@@ -1,18 +1,34 @@
-importScripts("/precache-manifest.80839fdbb288ea0c085b536a8c0cc34a.js", "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
+/**
+ * Welcome to your Workbox-powered service worker!
+ *
+ * You'll need to register this file in your web app and you should
+ * disable HTTP caching for this file too.
+ * See https://goo.gl/nhQhGp
+ *
+ * The rest of the code is auto-generated. Please don't update this file
+ * directly; instead, make changes to your Workbox build configuration
+ * and re-run your build process.
+ * See https://goo.gl/2aRDsh
+ */
 
-workbox.core.setCacheNameDetails({prefix: "swcache-v1"});
+importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
-self.addEventListener('install', (event) => {
-  console.info('[info] 서비스워커를 설치합니다 ..');
+importScripts(
+  "/precache-manifest.3f4ba2b10c52511337f4552f304c4faf.js"
+);
 
-  self.skipWaiting();
+workbox.core.setCacheNameDetails({prefix: "pwa"});
+
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.type === 'SKIP_WAITING') {
+    self.skipWaiting();
+  }
 });
 
-self.addEventListener('activate', (event) => {
-  console.info('[info] 서비스워커를 활성화합니다 ..');
-
-  self.clients.claim();
-});
-
+/**
+ * The workboxSW.precacheAndRoute() method efficiently caches and responds to
+ * requests for URLs in the manifest.
+ * See https://goo.gl/S9QRab
+ */
 self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
