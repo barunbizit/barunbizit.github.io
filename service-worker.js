@@ -1,18 +1,34 @@
-importScripts("/precache-manifest.626b2600d2e75b067d28e9d598f94728.js", "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
+/**
+ * Welcome to your Workbox-powered service worker!
+ *
+ * You'll need to register this file in your web app and you should
+ * disable HTTP caching for this file too.
+ * See https://goo.gl/nhQhGp
+ *
+ * The rest of the code is auto-generated. Please don't update this file
+ * directly; instead, make changes to your Workbox build configuration
+ * and re-run your build process.
+ * See https://goo.gl/2aRDsh
+ */
 
-workbox.core.setCacheNameDetails({prefix: "swcache-v1"});
+importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
-self.addEventListener('install', (event) => {
-  console.info('[info] 서비스워커를 설치합니다 ..');
+importScripts(
+  "/precache-manifest.cecf8f2efbc8ac7b57c8b2ea4134b12a.js"
+);
 
-  self.skipWaiting();
+workbox.core.setCacheNameDetails({prefix: "moneyshield.ionic"});
+
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.type === 'SKIP_WAITING') {
+    self.skipWaiting();
+  }
 });
 
-self.addEventListener('activate', (event) => {
-  console.info('[info] 서비스워커를 활성화합니다 ..');
-
-  self.clients.claim();
-});
-
+/**
+ * The workboxSW.precacheAndRoute() method efficiently caches and responds to
+ * requests for URLs in the manifest.
+ * See https://goo.gl/S9QRab
+ */
 self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
